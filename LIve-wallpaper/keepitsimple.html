@@ -48,61 +48,56 @@
             100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
 
-        .glow-orb {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-            animation: orbMove 20s infinite ease-in-out;
-        }
 
-        @keyframes orbMove {
-            0%, 100% { transform: translate(0px, 0px) scale(1); }
-            25% { transform: translate(100px, -50px) scale(1.2); }
-            50% { transform: translate(-50px, 100px) scale(0.8); }
-            75% { transform: translate(-100px, -100px) scale(1.1); }
-        }
 
         /* Main Content */
         .main-content {
             position: relative;
             z-index: 10;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .date-display {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
             font-weight: 300;
-            margin-bottom: 40px;
+            margin-bottom: clamp(30px, 5vh, 50px);
             letter-spacing: 1px;
             animation: fadeInUp 1s ease-out;
+            text-align: center;
         }
 
         .clock-container {
             display: flex;
-            gap: 25px;
+            gap: clamp(15px, 4vw, 30px);
             align-items: center;
             animation: fadeInUp 1s ease-out 0.2s both;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .time-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 18px;
+            gap: clamp(12px, 2vh, 20px);
         }
 
         .time-group {
             display: flex;
-            gap: 10px;
+            gap: clamp(8px, 1.5vw, 15px);
         }
 
         .flip-card {
             position: relative;
-            width: 100px;
-            height: 140px;
+            width: clamp(60px, 8vw, 120px);
+            height: clamp(80px, 12vw, 160px);
             perspective: 1200px;
         }
 
@@ -125,11 +120,11 @@
             height: 100%;
             backface-visibility: hidden;
             background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-            border-radius: 12px;
+            border-radius: clamp(8px, 1vw, 15px);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: clamp(1.8rem, 4vw, 4.5rem);
             font-weight: bold;
             color: #ffffff;
             box-shadow: 
@@ -155,10 +150,10 @@
         }
 
         .separator {
-            font-size: 5rem;
+            font-size: clamp(2.5rem, 6vw, 6rem);
             color: #ffffff;
             font-weight: bold;
-            margin: 0 20px;
+            margin: 0 clamp(10px, 2vw, 25px);
             text-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
             animation: pulse 2s infinite ease-in-out;
         }
@@ -176,43 +171,43 @@
 
         .label {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 1.5vw, 1rem);
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: clamp(1px, 0.3vw, 2px);
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         /* Additional Info */
         .info-bar {
-            position: absolute;
-            bottom: 40px;
+            position: fixed;
+            bottom: clamp(80px, 12vh, 120px);
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: clamp(10px, 2vw, 25px);
             color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
+            font-size: clamp(0.75rem, 1.5vw, 1rem);
             font-weight: 400;
             letter-spacing: 0.5px;
             animation: fadeInUp 1s ease-out 0.6s both;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            max-width: 90vw;
+            z-index: 20;
         }
 
         .info-item {
             display: flex;
             align-items: center;
+            white-space: nowrap;
         }
 
         .info-divider {
             color: rgba(255, 255, 255, 0.2);
-            font-size: 0.6rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: clamp(0.5rem, 1vw, 0.8rem);
         }
 
         .tagline {
@@ -239,12 +234,14 @@
         }
 
         .timezone {
-            position: absolute;
-            top: 40px;
-            right: 40px;
+            position: fixed;
+            top: clamp(20px, 3vh, 40px);
+            right: clamp(20px, 3vw, 40px);
             color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 1.5vw, 1rem);
             animation: fadeInUp 1s ease-out 0.4s both;
+            text-align: right;
+            z-index: 20;
         }
 
         /* Animations */
@@ -256,167 +253,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .flip-card {
-                width: 70px;
-                height: 100px;
-            }
-            
-            .flip-card-front,
-            .flip-card-back {
-                font-size: 2.5rem;
-                border-radius: 8px;
-            }
-            
-            .separator {
-                font-size: 3rem;
-                margin: 0 10px;
-            }
-            
-            .clock-container {
-                gap: 12px;
-            }
-
-            .date-display {
-                font-size: 0.95rem;
-                margin-bottom: 25px;
-                padding: 0 20px;
-                text-align: center;
-            }
-
-            .info-bar {
-                bottom: 15px;
-                gap: 12px;
-                font-size: 0.7rem;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 0 15px;
-            }
-
-            .timezone {
-                top: 15px;
-                right: 15px;
-                font-size: 0.7rem;
-                max-width: 120px;
-            }
-            
-            .timezone div {
-                font-size: 0.65em !important;
-            }
-
-            .label {
-                font-size: 0.75rem;
-                letter-spacing: 1px;
-            }
-
-            .time-section {
-                gap: 12px;
-            }
-        }
-
-        /* Extra small mobile devices */
-        @media (max-width: 480px) {
-            .flip-card {
-                width: 60px;
-                height: 85px;
-            }
-            
-            .flip-card-front,
-            .flip-card-back {
-                font-size: 2rem;
-                border-radius: 6px;
-            }
-            
-            .separator {
-                font-size: 2.5rem;
-                margin: 0 8px;
-            }
-            
-            .clock-container {
-                gap: 8px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .date-display {
-                font-size: 0.85rem;
-                margin-bottom: 20px;
-                padding: 0 15px;
-                line-height: 1.3;
-            }
-
-            .info-bar {
-                bottom: 10px;
-                gap: 8px;
-                font-size: 0.65rem;
-                padding: 0 10px;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .info-divider {
-                display: none;
-            }
-
-            .timezone {
-                top: 10px;
-                right: 10px;
-                font-size: 0.65rem;
-                max-width: 100px;
-            }
-
-            .label {
-                font-size: 0.65rem;
-                letter-spacing: 0.5px;
-            }
-
-            .time-section {
-                gap: 8px;
-            }
-
-            .main-content {
-                padding: 0 10px;
-            }
-
-            .glow-orb {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        /* Landscape mobile orientation */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .date-display {
-                margin-bottom: 15px;
-                font-size: 0.85rem;
-            }
-            
-            .info-bar {
-                bottom: 10px;
-                font-size: 0.65rem;
-            }
-            
-            .timezone {
-                top: 10px;
-                font-size: 0.65rem;
-            }
-
-            .flip-card {
-                width: 65px;
-                height: 90px;
-            }
-            
-            .flip-card-front,
-            .flip-card-back {
-                font-size: 2.2rem;
-            }
-            
-            .separator {
-                font-size: 2.8rem;
             }
         }
 
@@ -454,14 +290,133 @@
                 transform: rotateY(0deg) translateY(0px);
             }
         }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 768px) {
+            .clock-container {
+                gap: clamp(8px, 3vw, 20px);
+                flex-direction: row;
+            }
+            
+            .info-bar {
+                flex-direction: column;
+                gap: clamp(5px, 1vh, 10px);
+                bottom: clamp(40px, 8vh, 70px);
+                font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+            }
+
+            .info-divider {
+                display: none;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 480px) {
+            .clock-container {
+                flex-wrap: wrap;
+                max-width: 100%;
+            }
+            
+            .time-section {
+                margin: 0;
+            }
+            
+            .separator {
+                order: 3;
+                width: 100%;
+                margin: clamp(5px, 2vh, 10px) 0;
+            }
+            
+            .info-bar {
+                position: fixed;
+                bottom: clamp(30px, 6vh, 60px);
+                font-size: clamp(0.6rem, 1vw, 0.75rem);
+            }
+        }
+
+        /* Large desktop screens */
+        @media (min-width: 1200px) {
+            .flip-card {
+                width: clamp(100px, 6vw, 140px);
+                height: clamp(140px, 10vw, 180px);
+            }
+            
+            .flip-card-front,
+            .flip-card-back {
+                font-size: clamp(3.5rem, 4vw, 5rem);
+            }
+            
+            .separator {
+                font-size: clamp(4rem, 5vw, 7rem);
+            }
+            
+            .date-display {
+                font-size: clamp(1.2rem, 2vw, 1.8rem);
+                margin-bottom: clamp(40px, 6vh, 60px);
+            }
+        }
+
+        /* Ultra wide screens */
+        @media (min-width: 1920px) {
+            .main-content {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+            
+            .info-bar {
+                max-width: 1200px;
+            }
+        }
+
+        /* Landscape mobile orientation */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .main-content {
+                min-height: auto;
+                padding: 10px;
+            }
+            
+            .date-display {
+                margin-bottom: clamp(15px, 3vh, 25px);
+                font-size: clamp(0.8rem, 2vh, 1.2rem);
+            }
+            
+            .info-bar {
+                bottom: clamp(25px, 4vh, 45px);
+                font-size: clamp(0.6rem, 1.5vh, 0.8rem);
+            }
+            
+            .timezone {
+                top: clamp(5px, 1vh, 15px);
+                font-size: clamp(0.6rem, 1.5vh, 0.8rem);
+            }
+
+            .flip-card {
+                width: clamp(50px, 8vh, 80px);
+                height: clamp(70px, 12vh, 110px);
+            }
+            
+            .flip-card-front,
+            .flip-card-back {
+                font-size: clamp(1.5rem, 4vh, 2.5rem);
+            }
+            
+            .separator {
+                font-size: clamp(2rem, 5vh, 3.5rem);
+            }
+
+            .time-section {
+                gap: clamp(8px, 1.5vh, 15px);
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Animated Background -->
     <div class="bg-animation" id="bgAnimation">
-        <div class="glow-orb" style="top: 20%; left: 10%;"></div>
-        <div class="glow-orb" style="top: 60%; right: 15%; animation-delay: -10s;"></div>
-        <div class="glow-orb" style="bottom: 30%; left: 70%; animation-delay: -5s;"></div>
     </div>
 
     <!-- Timezone Display -->
@@ -670,7 +625,7 @@
                 
                 cityName = cityMapping[cityName] || cityName;
                 
-                document.getElementById('timezone').innerHTML = `<div style="text-align: right;"><div style="font-size: 0.8em; margin-bottom: 2px;">${cityName}</div><div style="font-size: 0.75em; opacity: 0.7;">${timezoneName}</div></div>`;
+                document.getElementById('timezone').innerHTML = `<div style="text-align: right;"><div style="font-size: 0.9em; margin-bottom: 3px; font-weight: 500;">${cityName}</div><div style="font-size: 0.8em; opacity: 0.7;">${timezoneName}</div></div>`;
             }
 
             updateDayPhase() {
@@ -723,17 +678,26 @@
             }
         });
 
-        // Add some interactivity
+        // Add some interactivity with particle movement on mouse
+        let mouseTrackingEnabled = true;
         document.addEventListener('mousemove', (e) => {
+            if (!mouseTrackingEnabled) return;
+            
             const mouseX = e.clientX / window.innerWidth;
             const mouseY = e.clientY / window.innerHeight;
             
-            document.querySelectorAll('.glow-orb').forEach((orb, index) => {
-                const moveX = (mouseX - 0.5) * 20 * (index + 1);
-                const moveY = (mouseY - 0.5) * 20 * (index + 1);
-                orb.style.transform += ` translate(${moveX}px, ${moveY}px)`;
+            // Subtle particle influence on mouse movement
+            document.querySelectorAll('.floating-particle').forEach((particle, index) => {
+                const moveX = (mouseX - 0.5) * 5;
+                const moveY = (mouseY - 0.5) * 5;
+                particle.style.transform += ` translate(${moveX}px, ${moveY}px)`;
             });
         });
+
+        // Disable mouse tracking on mobile for better performance
+        if (window.innerWidth <= 768) {
+            mouseTrackingEnabled = false;
+        }
     </script>
 </body>
 </html>
