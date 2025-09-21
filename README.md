@@ -2,7 +2,7 @@
 
 **Flip It Simple** is a sleek, interactive flip clock live wallpaper featuring animated backgrounds, real-time date, time, and timezone display. Perfect for customizing your desktop with a minimal yet visually appealing clock.
 
-![Live Wallpaper Preview](https://github.com/xspatrian/Flip-It-Simple/blob/main/LIve-wallpaper/livewallpaper.gif)
+![Live Wallpaper Preview]([https://github.com/xspatrian/Flip-It-Simple/blob/main/LIve-wallpaper/livewallpaper.gif](https://drive.google.com/file/d/1AY0AJA2ZmXLjjXk_lqBl4XBRPSHNsZ5J/view?usp=sharing))
 
 ---
 
